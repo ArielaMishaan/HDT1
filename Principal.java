@@ -28,7 +28,7 @@ public class Principal {
 
                 if (encender == 1){
 
-                    while (opcion >= 0 && opcion < 6){
+                    while (opcion >= 0 && opcion < 5){
 
                         System.out.println(menu);
                         System.out.println("\nEscoja una opción: ");

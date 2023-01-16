@@ -93,12 +93,133 @@ public class Principal {
                                 break;
 
                             case 3: // Guardar emisora actual 
+                                if (radio.getFrequence() == "AM"){
+                                    System.out.println("La estación actual es: " + radio.getAMActualStation());  
+
+                                    System.out.println("¿En qué slot desea guardar la estacion? (Del 1 al 12)");
+                                    int slot = teclado.nextInt();
+                                    teclado.nextLine();
+                                    
+                                    if (slot <= 0 || slot > 12){
+                                        System.out.println("Ingrese un número válido.");
+                                        boolean entradaIncorrecta2 = true;
+                                        
+                                        while (entradaIncorrecta2){
+                                            System.out.println("¿En qué slot desea guardar la estacion? (Del 1 al 12)");
+                                            slot = teclado.nextInt();
+                                            teclado.nextLine();
+                                            
+                                            if (slot > 0 && slot <= 12){
+                                                entradaIncorrecta2 = false;
+                                            }
+                                            else{
+                                                System.out.println("Ingrese un número válido.");
+                                            }
+                                        }
+                                    }
+
+                                    radio.saveAMStation(radio.getAMActualStation(), slot); 
+                                    System.out.println("Se ha guardado el slot.");
+                                    
+                                }
+
+                                else if (radio.getFrequence() == "FM"){
+                                    System.out.println("La estación actual es: " + radio.getFMActualStation());  
+
+                                    System.out.println("¿En qué slot desea guardar la estacion? (Del 1 al 12)");
+                                    int slot = teclado.nextInt();
+                                    teclado.nextLine();
+                                    
+                                    if (slot <= 0 || slot > 12){
+                                        System.out.println("Ingrese un número válido.");
+                                        boolean entradaIncorrecta2 = true;
+                                        
+                                        while (entradaIncorrecta2){
+                                            System.out.println("¿En qué slot desea guardar la estacion? (Del 1 al 12)");
+                                            slot = teclado.nextInt();
+                                            teclado.nextLine();
+                                            
+                                            if (slot > 0 && slot <= 12){
+                                                entradaIncorrecta2 = false;
+                                            }
+                                            else{
+                                                System.out.println("Ingrese un número válido.");
+                                            }
+                                        }
+                                    }
+
+                                    radio.saveFMStation(radio.getFMActualStation(), slot); 
+                                    System.out.println("Se ha guardado el slot.");
+                                }
+
                                 break;
 
                             case 4: // Seleccionar una emisora de las guardadas 
+                                if (radio.getFrequence() == "AM"){
+                                    System.out.println("La estación actual es: " + radio.getAMActualStation());  
+
+                                    System.out.println("¿Qué slot desea sintonizar? (Del 1 al 12)");
+                                    int slot2 = teclado.nextInt();
+                                    teclado.nextLine();
+                                    
+                                    if (slot2 <= 0 || slot2 > 12){
+                                        if (radio.getAMSlot(slot2) == 0){
+                                            System.out.println("El slot se encuentra vacío.");
+                                            boolean entradaIncorrecta3 = true;
+                                            
+                                            while (entradaIncorrecta3){
+                                                System.out.println("¿Qué slot desea sintonizar? (Del 1 al 12)");
+                                                slot2 = teclado.nextInt();
+                                                teclado.nextLine();
+                                                
+                                                if ((slot2 > 0 && slot2 <= 12) && (radio.getAMSlot(slot2) != 0)){
+                                                    entradaIncorrecta3 = false;
+                                                }
+                                                else{
+                                                    System.out.println("El slot se encuentra vacío.");
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                    System.out.println("Se ha seleccionado la emisora: " + radio.getAMSlot(slot2));  
+
+                                }
+
+                                else if (radio.getFrequence() == "FM"){
+                                    System.out.println("La estación actual es: " + radio.getFMActualStation());  
+
+                                    System.out.println("¿Qué slot desea sintonizar? (Del 1 al 12)");
+                                    int slot2 = teclado.nextInt();
+                                    teclado.nextLine();
+                                    
+                                    if (slot2 <= 0 || slot2 > 12){
+                                        if (radio.getFMSlot(slot2) == 0){
+                                            System.out.println("El slot se encuentra vacío.");
+                                            boolean entradaIncorrecta3 = true;
+                                            
+                                            while (entradaIncorrecta3){
+                                                System.out.println("¿Qué slot desea sintonizar? (Del 1 al 12)");
+                                                slot2 = teclado.nextInt();
+                                                teclado.nextLine();
+                                                
+                                                if ((slot2 > 0 && slot2 <= 12) && (radio.getFMSlot(slot2) != 0)){
+                                                    entradaIncorrecta3 = false;
+                                                }
+                                                else{
+                                                    System.out.println("El slot se encuentra vacío.");
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                    System.out.println("Se ha seleccionado la emisora: " + radio.getFMSlot(slot2));  
+                                }
                                 break;
 
                             case 5: // Apagar el radio
+                                radio.off();
+                                System.out.println("Se ha apagado el radio.");
                                 break;
                         
                             default:

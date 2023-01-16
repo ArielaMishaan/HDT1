@@ -1,6 +1,17 @@
 import java.util.Scanner;
+/**
+ * Ignacio Méndez (22613), Ariela Mishaan (22052), Diego Soto
+ * Algoritmos y Estructuras de Datos Sección 40
+ * Hoja de Trabajo 1
+ * 16-01-2023
+ * Clase Principal: es la que interactúa con el usuario. Solamente se comunica con la clase Radio. 
+ */
 
 public class Principal {
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         
         Radio radio = new Radio();
@@ -26,13 +37,27 @@ public class Principal {
 
                         switch (opcion) {
                             case 1: //Cambiar a FM / AM
-                                System.out.println("Frecuancia actual del radio: " + radio.getFrequence());
+                                System.out.println("Frecuencia actual del radio: " + radio.getFrequence());
                                 String frecuencia = radio.getFrequence();
-                                radio.setFrequence(frecuencia);
+
+                                switch (frecuencia) {
+                                    case "AM":
+                                        radio.setFrequence("FM");
+                                        break;
+                                
+                                    case "FM":
+                                        radio.setFrequence("AM");
+                                        break;
+                                    
+                                    default:
+                                        break;
+                                }
+
                                 System.out.println("La frecuencia se ha cambiado a: " + radio.getFrequence());
                                 break;
 
                             case 2: // Avanzar emisora
+                                
                                 System.out.println("\n1. Subir estacion \n2. Bajar estacion");
                                 int subirBajar = teclado.nextInt();
                                 teclado.nextLine();

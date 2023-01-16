@@ -1,6 +1,13 @@
 /**
  * @author moises.alonso
+ * 
+ * Ignacio Méndez (22613), Ariela Mishaan (22052), Diego Soto
+ * Algoritmos y Estructuras de Datos Sección 40
+ * Hoja de Trabajo 1
+ * 16-01-2023
+ * Interfaz IRadio: define los métodos que la clase Radio tiene que implementar.
  */
+
 public interface IRadio {
 	
 	public void on();

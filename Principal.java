@@ -14,7 +14,7 @@ public class Principal {
      */
     public static void main(String[] args) {
         
-        Radio radio = new Radio();
+        IRadio radio = new RadioPrestado1();
         Scanner teclado = new Scanner(System.in);
         int opcion = 0;
 
